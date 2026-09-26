@@ -1,0 +1,8 @@
+experiment_id,blocking_rule,s1_rows,candidate_pairs,candidate_recall,avg_candidates_per_s1,notes
+B1,country + exact normalized business name,10000,4574358265,0.36667338651614206,457435.8265,Exact country + normalized name equality.
+B2,country + significant normalized name token,10000,0,0.0,0.0,Country + longest normalized name token of length >= 4.
+B3,country + address number + name token,10000,0,0.0,0.0,Country + extracted address number + significant normalized name token.
+B4,country + address signature,10000,18379287595,0.5678080810989834,1837928.7595,Country + first three normalized address tokens.
+B1+B2,B1 UNION B2,10000,4574358265,0.36667338651614206,457435.8265,Union calculated from compact blocking-key groups.
+B1+B2+B3,B1 UNION B2 UNION B3,10000,4574358265,0.36667338651614206,457435.8265,Union calculated from compact blocking-key groups.
+B1+B2+B3+B4,B1 UNION B2 UNION B3 UNION B4,10000,21393298553,0.7202718659102036,2139329.8553,Union calculated from compact blocking-key groups.
