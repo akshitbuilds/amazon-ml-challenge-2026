@@ -64,3 +64,44 @@ Ground truth was used only to score candidates after generation, never to constr
 - Measured recall tops out at 79.7541% for the full union of all seven passes on this development sample. If your project target is materially higher, these deterministic exact/near-exact keys are not sufficient on their own -- true matches with heavier typos, transliteration differences, or unrelated wording will not share any of these keys and need a genuinely fuzzy pass (e.g. phonetic encoding, edit-distance-bounded blocking) on top of this set.
 - All measurements are on a 10,000-row S1 development sample; recall and volume should be re-validated on a larger sample before being treated as final production numbers.
 - B3's redesign only uses each entity's second-rarest qualifying token; entities with fewer than two qualifying tokens (short or highly generic names) get no B3 candidates and rely on B1/B2/B4/B5/B6/B7 instead.
+## Phase 2 Final Baseline
+
+Phase 2 was evaluated using a deterministic 10,000-row sample from
+training Source 1.
+
+The evaluated blocking passes were:
+
+- B1: country + exact normalized business name
+- B2: country + frequency-capped rarest normalized name token
+- B3: country + address number + second-rarest name token
+- B4: country + address signature
+- B5: country + suffix-stripped exact name
+
+The cumulative benchmark reached:
+
+- Candidate pairs: 2,293,505
+- S1 represented: 9,898
+- Average candidates/S1: 231.71
+- Maximum candidates/S1: 8,367
+- True matched IDs recovered: 24,865
+- Missing true matched IDs: 9,858
+- Candidate recall: 71.6096%
+- Zero-candidate S1: 102
+
+B3 was not selected for the baseline because after B1+B5+B2
+it contributed only 168 additional true matched IDs.
+
+### Selected Phase 2 Baseline
+
+B1 + B5 + B2 + B4
+
+This is the baseline candidate-generation configuration for the
+next ML-scoring phase.
+
+The 71.6096% recall reported above is the measured recall of the
+B1+B5+B2+B3+B4 cumulative experiment on the deterministic 10,000-row
+training sample. It is not the final challenge score and is not being
+claimed as globally optimal.
+
+The Phase 2 blocker is now frozen so development can proceed to
+candidate scoring and the complete entity-resolution pipeline.
