@@ -1,8 +1,8 @@
 experiment_id,blocking_rule,s1_rows,candidate_pairs,candidate_recall,avg_candidates_per_s1,notes
-B1,country + exact normalized business name,10000,4574358265,0.36667338651614206,457435.8265,Exact country + normalized name equality.
-B2,country + significant normalized name token,10000,0,0.0,0.0,Country + longest normalized name token of length >= 4.
-B3,country + address number + name token,10000,0,0.0,0.0,Country + extracted address number + significant normalized name token.
-B4,country + address signature,10000,18379287595,0.5678080810989834,1837928.7595,Country + first three normalized address tokens.
-B1+B2,B1 UNION B2,10000,4574358265,0.36667338651614206,457435.8265,Union calculated from compact blocking-key groups.
-B1+B2+B3,B1 UNION B2 UNION B3,10000,4574358265,0.36667338651614206,457435.8265,Union calculated from compact blocking-key groups.
-B1+B2+B3+B4,B1 UNION B2 UNION B3 UNION B4,10000,21393298553,0.7202718659102036,2139329.8553,Union calculated from compact blocking-key groups.
+B1,country + exact normalized business name,10000,96210,0.22293580623794026,9.621,Exact country + normalized name equality.
+B2,country + significant normalized name token,10000,25247947,0.632491432191919,2561.942871638762,Longest normalized name token with length >= 4 is used per entity; short tokens are ignored.
+B3,country + address number + name token,10000,112840,0.43550384471387843,13.64119922630561,Country + extracted address number + longest normalized name token of length >= 4.
+B4,country + address signature,10000,692706,0.33490769806756326,69.2706,Country + first three normalized address tokens; full address equality is not required.
+B1+B2,B1 UNION B2,10000,25249224,0.636206548973303,2535.0626506024096,Union of exact normalized-name blocking and significant-name-token blocking.
+B1+B2+B3,B1 UNION B2 UNION B3,10000,25249224,0.636206548973303,2535.0626506024096,Adds address-number + informative-name-token blocking to B1+B2.
+B1+B2+B3+B4,B1 UNION B2 UNION B3 UNION B4,10000,25934247,0.7679635976154134,2595.241368958271,Full tested blocking union.
