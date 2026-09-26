@@ -3,7 +3,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-path = ROOT / "data" / "tsv" / "train" / "train_ground_truth.tsv"
+path = ROOT / "dataset" / "train" / "train_ground_truth.tsv"
 
 df = pd.read_csv(path, sep="\t")
 
