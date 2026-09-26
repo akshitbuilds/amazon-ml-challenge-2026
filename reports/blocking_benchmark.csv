@@ -1,8 +1,15 @@
-experiment_id,blocking_rule,s1_rows,candidate_pairs,candidate_recall,avg_candidates_per_s1,notes
-B1,country + exact normalized business name,10000,96210,0.22293580623794026,9.621,Exact country + normalized name equality.
-B2,country + significant normalized name token,10000,25247947,0.632491432191919,2561.942871638762,Longest normalized name token with length >= 4 is used per entity; short tokens are ignored.
-B3,country + address number + name token,10000,112840,0.43550384471387843,13.64119922630561,Country + extracted address number + longest normalized name token of length >= 4.
-B4,country + address signature,10000,692706,0.33490769806756326,69.2706,Country + first three normalized address tokens; full address equality is not required.
-B1+B2,B1 UNION B2,10000,25249224,0.636206548973303,2535.0626506024096,Union of exact normalized-name blocking and significant-name-token blocking.
-B1+B2+B3,B1 UNION B2 UNION B3,10000,25249224,0.636206548973303,2535.0626506024096,Adds address-number + informative-name-token blocking to B1+B2.
-B1+B2+B3+B4,B1 UNION B2 UNION B3 UNION B4,10000,25934247,0.7679635976154134,2595.241368958271,Full tested blocking union.
+experiment_id,blocking_rule,candidate_pairs,represented_s1,avg_candidates_per_s1,max_candidates_per_s1,matched_true_ids,candidate_recall,zero_candidate_s1,incremental_true_ids_recovered,notes
+B1,country + exact normalized business name,95857,7204,13.306079955580234,402,7741,0.22293580623794026,2796,,"Exact match; highest precision, catches identical naming only."
+B2,country + rarest normalized name token (freq-capped),1249961,5098,245.18654374264418,1610,12663,0.36468623102842496,4902,,"Each entity's single rarest token (len>=4, corpus freq<=2,000)."
+B3,country + address number + SECOND-rarest name token (independent of B2),3682,1304,2.8236196319018405,58,2682,0.07723986982691587,8696,,"Uses each entity's SECOND-rarest token (rn=2), not the one B2 already used, combined with extracted address number, so it is independent of B2 rather than a subset."
+B4,country + address signature (first 3 address tokens),682063,6990,97.57696709585122,8170,11552,0.3326901477406906,3010,,Compact address signature; tolerant of minor address wording differences.
+B5,country + suffix-stripped exact name (legal-suffix insensitive),408268,9207,44.34321711741067,1495,14741,0.42453129049909283,793,,"Strips legal-entity suffix words (llc, inc, ltd, ltda, pvt, private, ...) before exact match."
+B6,country + order-independent two-token signature,967367,5048,191.63371632329637,1583,11794,0.3396595916251476,4952,,"Each entity's two rarest qualifying tokens, sorted alphabetically and joined -- order-independent and tighter than B2 alone, at the cost of requiring 2 qualifying tokens."
+B7,country + frequency-capped 6-char name prefix,1847715,6783,272.40380362671385,1978,17127,0.49324655127725137,3217,,"First 6 chars of suffix-stripped, space-removed name; prefixes with corpus frequency > 2,000 are excluded to bound volume."
+B1,B1,95857,7204,13.306079955580234,402,7741,0.22293580623794026,2796,7741,"Cumulative union through B1, added in fixed evaluation order."
+B1+B5,B1 UNION B5,408268,9207,44.34321711741067,1495,14741,0.42453129049909283,793,7000,"Cumulative union through B5, added in fixed evaluation order."
+B1+B5+B2,B1 UNION B5 UNION B2,1616622,9722,166.28492079818966,1610,19289,0.5555107565590531,278,4548,"Cumulative union through B2, added in fixed evaluation order."
+B1+B5+B2+B3,B1 UNION B5 UNION B2 UNION B3,1617740,9722,166.39991771240486,1610,19457,0.5603490481813207,278,168,"Cumulative union through B3, added in fixed evaluation order."
+B1+B5+B2+B3+B4,B1 UNION B5 UNION B2 UNION B3 UNION B4,2293505,9898,231.71398262275207,8367,24865,0.7160959594505083,102,5408,"Cumulative union through B4, added in fixed evaluation order."
+B1+B5+B2+B3+B4+B6,B1 UNION B5 UNION B2 UNION B3 UNION B4 UNION B6,2293505,9898,231.71398262275207,8367,24865,0.7160959594505083,102,0,"Cumulative union through B6, added in fixed evaluation order."
+B1+B5+B2+B3+B4+B6+B7,B1 UNION B5 UNION B2 UNION B3 UNION B4 UNION B6 UNION B7,3685634,9953,370.30382799156035,8899,27693,0.797540535092014,47,2828,"Cumulative union through B7, added in fixed evaluation order."
