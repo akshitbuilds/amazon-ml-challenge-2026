@@ -1,0 +1,2 @@
+experiment_id,blocking_version,candidate_count,candidate_recall,avg_candidates_per_s1,max_candidates_per_s1,zero_candidate_s1,notes
+EXP-0002,initialization,NA,NA,NA,NA,NA,Phase 2 candidate evaluation initialized
