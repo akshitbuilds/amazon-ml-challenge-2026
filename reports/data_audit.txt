@@ -1,224 +1,320 @@
-PHASE 1 MEMBER 2 COMPLETE
-==========================
 
-EXACT DATASET FILENAMES
-=======================
+================================================================================
+FILE: train_source1.tsv
+================================================================================
+Columns: ['entity_id', 'business_name', 'business_address', 'country']
+Sample rows inspected: 10000
 
-TRAIN:
-data/tsv/train/train_source1.tsv
-data/tsv/train/train_source2.tsv
-data/tsv/train/train_source3.tsv
-data/tsv/train/train_ground_truth.tsv
+Dtypes:
+entity_id           str
+business_name       str
+business_address    str
+country             str
+dtype: object
 
-TEST:
-data/tsv/test/test_source1.tsv
-data/tsv/test/test_source2.tsv
-data/tsv/test/test_source3.tsv
+Missing values in sample:
+entity_id           0
+business_name       0
+business_address    0
+country             0
+dtype: int64
 
+Country distribution in sample:
+country
+US       6043
+India    3957
+Name: count, dtype: int64
 
-DATASET STATISTICS
-==================
+Business name length statistics:
+count    10000.000000
+mean        24.029800
+std          7.792585
+min          3.000000
+25%         18.000000
+50%         24.000000
+75%         30.000000
+max         70.000000
+Name: business_name, dtype: float64
 
-TRAIN:
-train_source1 = 2,206,821
-train_source2 = 5,034,616
-train_source3 = 5,285,603
-train_ground_truth = 2,206,821
+Business address length statistics:
+count    10000.000000
+mean        51.710000
+std         25.229664
+min         17.000000
+25%         33.000000
+50%         40.000000
+75%         69.000000
+max        185.000000
+Name: business_address, dtype: float64
 
-TEST:
-test_source1 = 1,732,544
-test_source2 = 4,887,273
-test_source3 = 5,082,316
+Duplicate entity IDs in sample: 0
 
+================================================================================
+FILE: train_source2.tsv
+================================================================================
+Columns: ['entity_id', 'business_name', 'business_address', 'country']
+Sample rows inspected: 10000
 
-COUNTRY DISTRIBUTION
-====================
+Dtypes:
+entity_id           str
+business_name       str
+business_address    str
+country             str
+dtype: object
 
-TRAIN SOURCE 1:
-India = 883,188
-US = 1,323,633
-France = 0
+Missing values in sample:
+entity_id             0
+business_name         0
+business_address    337
+country               0
+dtype: int64
 
-TRAIN SOURCE 2:
-India = 2,017,799
-US = 3,016,817
-France = 0
+Country distribution in sample:
+country
+US       6034
+India    3966
+Name: count, dtype: int64
 
-TRAIN SOURCE 3:
-India = 2,115,547
-US = 3,170,056
-France = 0
+Business name length statistics:
+count    10000.00000
+mean        25.02540
+std          8.93701
+min          2.00000
+25%         18.00000
+50%         25.00000
+75%         31.00000
+max         72.00000
+Name: business_name, dtype: float64
 
-TEST SOURCE 1:
-France = 259,452
-India = 809,986
-US = 663,106
+Business address length statistics:
+count    10000.00000
+mean        46.11560
+std         24.87121
+min          0.00000
+25%         30.00000
+50%         37.00000
+75%         62.00000
+max        176.00000
+Name: business_address, dtype: float64
 
-TEST SOURCE 2:
-France = 703,378
-India = 2,312,565
-US = 1,871,330
+Duplicate entity IDs in sample: 0
 
-TEST SOURCE 3:
-France = 731,615
-India = 2,405,000
-US = 1,945,701
+================================================================================
+FILE: train_source3.tsv
+================================================================================
+Columns: ['entity_id', 'business_name', 'business_address', 'country']
+Sample rows inspected: 10000
 
+Dtypes:
+entity_id           str
+business_name       str
+business_address    str
+country             str
+dtype: object
 
-MISSING VALUES
-===============
+Missing values in sample:
+entity_id             0
+business_name         0
+business_address    350
+country               0
+dtype: int64
 
-TRAIN SOURCE 1:
-business_name = 0
-business_address = 0
-country = 0
+Country distribution in sample:
+country
+US       5905
+India    4095
+Name: count, dtype: int64
 
-TRAIN SOURCE 2:
-business_name = 0
-business_address = 168,967 (3.36%)
-country = 0
+Business name length statistics:
+count    10000.000000
+mean        25.190900
+std          9.534608
+min          2.000000
+25%         18.000000
+50%         25.000000
+75%         31.000000
+max         79.000000
+Name: business_name, dtype: float64
 
-TRAIN SOURCE 3:
-business_name = 0
-business_address = 175,916 (3.33%)
-country = 0
+Business address length statistics:
+count    10000.000000
+mean        46.813000
+std         21.802536
+min          0.000000
+25%         35.000000
+50%         42.000000
+75%         54.000000
+max        170.000000
+Name: business_address, dtype: float64
 
-TEST SOURCE 1:
-business_name = 0
-business_address = 0 (0.00%)
-country = 0
+Duplicate entity IDs in sample: 0
 
-TEST SOURCE 2:
-business_name = 0
-business_address = 129,408 (2.65%)
-country = 0
+================================================================================
+FILE: train_ground_truth.tsv
+================================================================================
+Columns: ['source1_entity_id', 'matched_entity_ids']
+Sample rows inspected: 10000
 
-TEST SOURCE 3:
-business_name = 0
-business_address = 136,098 (2.68%)
-country = 0
+Dtypes:
+source1_entity_id     str
+matched_entity_ids    str
+dtype: object
 
-
-NAME AND ADDRESS LENGTHS
-========================
-
-TRAIN SOURCE 1:
-Name: min 3, average 24.03, median 24, max 105
-Address: min 11, average 52.07, median 41, max 256
-
-TRAIN SOURCE 2:
-Name: min 2, average 25.10, median 25, max 104
-Address: min 8, average 47.83, median 37, max 249
-
-TRAIN SOURCE 3:
-Name: min 2, average 25.20, median 25, max 123
-Address: min 2, average 48.32, median 42, max 240
-
-TEST SOURCE 1:
-Name: min 3, average 23.84, median 24, max 92
-Address: min 11, average 57.21, median 50, max 268
-
-TEST SOURCE 2:
-Name: min 2, average 25.70, median 25, max 102
-Address: min 5, average 51.78, median 43, max 269
-
-TEST SOURCE 3:
-Name: min 2, average 25.66, median 25, max 103
-Address: min 5, average 50.08, median 44, max 267
-
-
-GROUND TRUTH
-============
-
-Total S1 = 2,206,821
-
-Zero match = 123,247
-One match = 119,157
-Multiple match = 1,964,417
-
-S2 only = 143,029
-S3 only = 164,498
-Both S2 + S3 = 1,776,047
-
-
-DETAILED MATCH COUNT DISTRIBUTION
-=================================
-
-0 matches = 123,247
-1 match = 119,157
-2 matches = 375,212
-3 matches = 530,841
-4 matches = 484,115
-5 matches = 321,957
-6 matches = 164,868
-7 matches = 63,968
-8 matches = 18,680
-9 matches = 4,205
-10 matches = 534
-11 matches = 37
-
-
-S2 MATCH COUNT DISTRIBUTION
-===========================
-
-0 = 287,745
-1 = 789,108
-2 = 652,779
-3 = 333,957
-4 = 119,078
-5 = 24,154
+Missing values in sample:
+source1_entity_id       0
+matched_entity_ids    557
+dtype: int64
 
 
-S3 MATCH COUNT DISTRIBUTION
-===========================
+================================================================================
+FILE: test_source1.tsv
+================================================================================
+Columns: ['entity_id', 'business_name', 'business_address', 'country']
+Sample rows inspected: 10000
 
-0 = 266,276
-1 = 716,417
-2 = 668,375
-3 = 372,443
-4 = 145,116
-5 = 35,378
-6 = 2,816
+Dtypes:
+entity_id           str
+business_name       str
+business_address    str
+country             str
+dtype: object
 
+Missing values in sample:
+entity_id           0
+business_name       0
+business_address    0
+country             0
+dtype: int64
 
-UNUSUAL PATTERNS OBSERVED
-=========================
+Country distribution in sample:
+country
+India     4619
+US        3891
+France    1490
+Name: count, dtype: int64
 
-1. TRAIN contains India and US records, but no France records.
-2. TEST contains France records in all three sources.
-3. business_name has zero missing values across the audited datasets.
-4. business_address is missing primarily in Source 2 and Source 3.
-5. TRAIN Source 2 has 3.36% missing addresses.
-6. TRAIN Source 3 has 3.33% missing addresses.
-7. TEST Source 2 has 2.65% missing addresses.
-8. TEST Source 3 has 2.68% missing addresses.
-9. Ground truth contains up to 11 matched entities for a single Source 1 entity.
-10. Most Source 1 entities have multiple matches: 1,964,417 out of 2,206,821.
-11. 123,247 Source 1 entities have no match.
-12. 1,776,047 Source 1 entities have matches in both Source 2 and Source 3.
-13. No duplicate entity IDs were observed in the 10,000-row audit samples.
+Business name length statistics:
+count    10000.000000
+mean        23.760700
+std          7.720324
+min          3.000000
+25%         18.000000
+50%         23.000000
+75%         29.000000
+max         75.000000
+Name: business_name, dtype: float64
 
+Business address length statistics:
+count    10000.00000
+mean        56.98770
+std         25.04901
+min         18.00000
+25%         36.00000
+50%         50.00000
+75%         74.00000
+max        188.00000
+Name: business_address, dtype: float64
 
-AUDIT METHOD
-============
+Duplicate entity IDs in sample: 0
 
-Dataset structure and exact filenames were verified using PowerShell.
+================================================================================
+FILE: test_source2.tsv
+================================================================================
+Columns: ['entity_id', 'business_name', 'business_address', 'country']
+Sample rows inspected: 10000
 
-Detailed file-level schema, data types, missing values, country distribution,
-name/address length statistics, and sample duplicate IDs were generated using
-src/data_audit.py.
+Dtypes:
+entity_id           str
+business_name       str
+business_address    str
+country             str
+dtype: object
 
-Ground-truth match distributions were calculated using
-src/analyze_ground_truth.py over the complete train_ground_truth.tsv file.
+Missing values in sample:
+entity_id             0
+business_name         0
+business_address    277
+country               0
+dtype: int64
 
-Full-dataset row counts, country distributions, missing-value counts,
-length statistics, and ground-truth counts were additionally verified
-using DuckDB on the Parquet dataset.
+Country distribution in sample:
+country
+India     4749
+US        3802
+France    1449
+Name: count, dtype: int64
 
+Business name length statistics:
+count    10000.000000
+mean        25.624700
+std          9.006684
+min          2.000000
+25%         19.000000
+50%         25.000000
+75%         32.000000
+max         67.000000
+Name: business_name, dtype: float64
 
-PHASE 1 STATUS
-==============
+Business address length statistics:
+count    10000.000000
+mean        50.480800
+std         25.643798
+min          0.000000
+25%         32.000000
+50%         42.000000
+75%         68.000000
+max        202.000000
+Name: business_address, dtype: float64
 
-COMPLETE
+Duplicate entity IDs in sample: 0
 
-Blocking implementation has NOT been started.
+================================================================================
+FILE: test_source3.tsv
+================================================================================
+Columns: ['entity_id', 'business_name', 'business_address', 'country']
+Sample rows inspected: 10000
+
+Dtypes:
+entity_id           str
+business_name       str
+business_address    str
+country             str
+dtype: object
+
+Missing values in sample:
+entity_id             0
+business_name         0
+business_address    274
+country               0
+dtype: int64
+
+Country distribution in sample:
+country
+India     4716
+US        3849
+France    1435
+Name: count, dtype: int64
+
+Business name length statistics:
+count    10000.000000
+mean        25.668500
+std          9.533315
+min          2.000000
+25%         19.000000
+50%         25.000000
+75%         32.000000
+max         70.000000
+Name: business_name, dtype: float64
+
+Business address length statistics:
+count    10000.000000
+mean        48.750200
+std         22.588728
+min          0.000000
+25%         35.000000
+50%         44.000000
+75%         59.000000
+max        190.000000
+Name: business_address, dtype: float64
+
+Duplicate entity IDs in sample: 0
