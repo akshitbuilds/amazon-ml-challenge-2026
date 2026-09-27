@@ -1,0 +1,10 @@
+threshold,macro_precision,macro_recall,macro_f0.5,S1_count,S1_with_prediction,S1_with_zero_prediction
+0.50,NA,NA,NA,NA,NA,NA
+0.60,NA,NA,NA,NA,NA,NA
+0.70,NA,NA,NA,NA,NA,NA
+0.75,NA,NA,NA,NA,NA,NA
+0.80,NA,NA,NA,NA,NA,NA
+0.85,NA,NA,NA,NA,NA,NA
+0.90,NA,NA,NA,NA,NA,NA
+0.95,NA,NA,NA,NA,NA,NA
+0.98,NA,NA,NA,NA,NA,NA
